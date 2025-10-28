@@ -1,14 +1,50 @@
 <?php
+require_once __DIR__ . '/config/autoload.php';
 require_once 'config/config.php';
-require_once 'config/autoload.php';
 
 $action = Utils::request('action', 'home');
 
 try {
     switch ($action) {
         case 'home':
-            $articleController = new ArticleController();
-            $articleController->showHome();
+            $controller = new PageController();
+            $controller->showHome();
+            break;
+
+        case 'books':
+            $controller = new PageController();
+            $controller->showBooks();
+            break;
+
+        case 'signup':
+            $controller = new PageController();
+            $controller->showSignUp();
+            break;
+
+        case 'register':
+            $controller = new SignUpController();
+            $controller->register();
+            break;
+
+        case 'login':
+            $controller = new PageController();
+            $controller->showLogin();
+            break;
+
+        case 'signin':
+            $controller = new ConnectionController();
+            $controller->signIn();
+            break;
+
+        case 'logout':
+            $controller = new ConnectionController();
+            $controller->logout();
+            break;
+
+        case 'book':
+            $controller = new PageController();
+            $id = $_GET['id'] ?? null;
+            $controller->showBook($id);
             break;
 
         default:

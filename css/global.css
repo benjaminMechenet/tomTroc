@@ -1,0 +1,93 @@
+* {
+  transition: all 0.3s;
+}
+
+body {
+  background-color: #f5f3ef;
+  font-family: "Inter", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 400;
+}
+
+h1,
+h2 {
+  font-family: "Playfair Display", serif;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 36px;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.main-button {
+  background-color: #00ac66;
+  border-radius: 15px;
+  display: block;
+  width: fit-content;
+  padding: 22px 38px;
+  color: white;
+  text-decoration: none;
+  font-size: larger;
+}
+
+.main-button:hover {
+  background-color: #06804f;
+}
+
+.secondary-button {
+  border-radius: 15px;
+  border: 1px solid #00ac66;
+  display: block;
+  width: fit-content;
+  padding: 22px 38px;
+  color: #00ac66;
+  text-decoration: none;
+  font-size: larger;
+}
+
+.secondary-button:hover {
+  color: white;
+  border-color: #06804f;
+  background-color: #06804f;
+}
+
+.bg-light {
+  background-color: #faf9f7;
+}
+
+.text-grey {
+  color: #a6a6a6;
+}
+
+.img-holder {
+  aspect-ratio: 1/1;
+  background-position: center;
+  background-size: cover;
+}
+
+.cover-img {
+  background-size: cover;
+  background-position: center;
+}
+
+.underline-link {
+  text-decoration: underline;
+  color: black;
+}

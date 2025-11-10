@@ -6,6 +6,7 @@ class User extends AbstractEntity
     private string $password = "";
     private string $pseudo = "";
     private ?DateTime $createdAt = null;
+    private ?string $profilePicture = null;
 
     /**
      * @param string $email
@@ -74,5 +75,21 @@ class User extends AbstractEntity
     public function getCreatedAt(): DateTime
     {
         return $this->createdAt;
+    }
+
+    /**
+     * @param string $profilePicture
+     */
+    public function setProfilePicture(?string $profilePicture): void
+    {
+        $this->profilePicture = $profilePicture;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProfilePicture(): ?string
+    {
+        return $this->profilePicture;
     }
 }

@@ -9,7 +9,7 @@ class ConnectionController
             $password = $_POST['password'] ?? '';
 
             if ($email === '' || $password === '') {
-                header('Location: index.php?action=login&error=Tous les champs sont obligatoires');
+                header('Location: index.php?action=login&error=' . urlencode('Tous les champs sont obligatoires'));
                 exit;
             }
 
@@ -17,7 +17,7 @@ class ConnectionController
             $user = $userManager->findByEmail($email);
 
             if (!$user) {
-                header('Location: index.php?action=login&error=Aucun compte ne correspond à cette adresse email');
+                header('Location: index.php?action=login&error=' . urlencode('Adresse email et/ou mot de passe incorrect'));
                 exit;
             }
 
@@ -31,7 +31,7 @@ class ConnectionController
                 header('Location: index.php?action=home');
                 exit;
             } else {
-                header('Location: index.php?action=login&error=' . urlencode('Mot de passe incorrect'));
+                header('Location: index.php?action=login&error=' . urlencode('Adresse email et/ou mot de passe incorrect'));
                 exit;
             }
         }

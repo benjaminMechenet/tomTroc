@@ -118,7 +118,7 @@ class Book extends AbstractEntity
     /**
      * @return bool
      */
-    public function getAvailable(): bool
+    public function isAvailable(): bool
     {
         return $this->available;
     }

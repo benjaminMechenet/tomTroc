@@ -19,7 +19,7 @@
 
                 <button class="main-button border-0 w-100" type="submit">S'inscrire</button>
 
-                <p class="mt-5">Déjà inscrit ? <a class="underline-link" href="index.php?action=login">Connectez-vous</a>
+                <p class="mt-5">Déjà inscrit ? <a class="text-black underline-link" href="index.php?action=login">Connectez-vous</a>
             </form>
         </div>
     </div>

@@ -16,7 +16,7 @@
 
                 <button class="main-button border-0 w-100" type="submit">Se connecter</button>
 
-                <p class="mt-5">Pas de compte ? <a class="underline-link" href="index.php?action=signup">Inscrivez-vous</a>
+                <p class="mt-5">Pas de compte ? <a class="text-black underline-link" href="index.php?action=signup">Inscrivez-vous</a>
             </form>
         </div>
     </div>

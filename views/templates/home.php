@@ -20,14 +20,14 @@
         <div class="row row-cols-4 gx-5 gy-5 w-75 m-auto">
             <?php foreach ($books as $book) { ?>
                 <div>
-                    <a class="col border-0 card rounded-bottom-3 rounded-top-0 article" href="index.php?action=book&id=<?= $book->getId() ?>">
+                    <a class="col border-0 card rounded-bottom-3 rounded-top-0 article" href="index.php?action=book&id=<?= htmlspecialchars($book->getId()) ?>">
                         <div>
-                            <div class="img-holder w-100" style="background-image : url(<?= $book->getImageUrl() ?> )">
+                            <div class="img-holder w-100" style="background-image : url(<?= htmlspecialchars($book->getImageUrl()) ?> )">
                             </div>
                             <div class="p-3">
-                                <h3 class="fs-5"><?= $book->getTitle() ?></h3>
-                                <p class="text-grey"><?= $book->getAuthor() ?></p>
-                                <p class="text-grey fst-italic">Mis à disposition par : <?= $book->getUserPseudo() ?> </p>
+                                <h3 class="fs-5"><?= htmlspecialchars($book->getTitle()) ?></h3>
+                                <p class="text-grey"><?= htmlspecialchars($book->getAuthor()) ?></p>
+                                <p class="text-grey fst-italic">Mis à disposition par : <?= htmlspecialchars($book->getUserPseudo()) ?> </p>
                             </div>
                         </div>
                     </a>

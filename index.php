@@ -26,6 +26,11 @@ try {
             $controller->register();
             break;
 
+        case 'update-account':
+            $controller = new SignUpController();
+            $controller->update();
+            break;
+
         case 'login':
             $controller = new PageController();
             $controller->showLogin();
@@ -45,6 +50,33 @@ try {
             $controller = new PageController();
             $id = $_GET['id'] ?? null;
             $controller->showBook($id);
+            break;
+
+        case 'delete-book':
+            $controller = new BookController();
+            $id = $_GET['id'] ?? null;
+            $controller->delete($id);
+            break;
+
+        case 'account':
+            $controller = new PageController();
+            $controller->showAccount();
+            break;
+
+        case 'update-picture':
+            $controller = new SignUpController();
+            $controller->updateProfilePicture();
+            break;
+
+        case 'member':
+            $controller = new PageController();
+            $id = $_GET['id'] ?? null;
+            $controller->showMember($id);
+            break;
+
+        case 'updateLabel':
+            $controller = new BookController();
+            $controller->updateAvailability();
             break;
 
         default:

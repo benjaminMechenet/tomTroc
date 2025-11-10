@@ -50,4 +50,40 @@ class BookManager extends AbstractEntityManager
 
         return $book;
     }
+
+    /**
+     * @return array
+     */
+    public function findByUser(User $user): array
+    {
+        $stmt = $this->pdo->prepare('SELECT * FROM books WHERE user_id = ?');
+        $stmt->execute([$user->getId()]);
+
+        $books = [];
+
+        while ($book = $stmt->fetch()) {
+            $books[] = new Book($book);
+        }
+
+        return $books;
+    }
+
+    public function delete($id): bool
+    {
+        $check = $this->pdo->prepare('SELECT id FROM books WHERE id = ?');
+        $check->execute([$id]);
+
+        if (!$check->fetch()) {
+            return false;
+        }
+
+        $stmt = $this->pdo->prepare('DELETE FROM books WHERE id = ?');
+        return $stmt->execute([$id]);
+    }
+
+    public function updataAvailability($id, $state): bool
+    {
+        $stmt = $this->pdo->prepare("UPDATE books SET available = ? WHERE id = ?");
+        return $stmt->execute([$state, $id]);
+    }
 }

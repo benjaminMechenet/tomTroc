@@ -89,5 +89,63 @@ a {
 
 .underline-link {
   text-decoration: underline;
-  color: black;
+}
+
+.separator {
+  width: 10%;
+  border-width: 2px;
+}
+
+.text-sm {
+  font-size: 0.75rem;
+}
+
+.fit-content {
+  width: fit-content;
+}
+
+.label {
+  color: white;
+  font-size: 0.7rem;
+}
+
+.label-available {
+  background-color: #6dc5a1;
+}
+
+.label-not-available {
+  background-color: #c56d6d;
+}
+
+.bg-darkgrey {
+  background-color: #f0f0f0;
+}
+
+.bg-yellow {
+  background-color: #f5f3ef;
+}
+
+.library-table tr:nth-child(even) {
+  background-color: #f0f0f0;
+}
+
+.library-table tr:nth-child(even) td {
+  background-color: transparent;
+}
+
+.w-15 {
+  width: 15%;
+}
+
+#profile_picture {
+  display: none;
+}
+
+.btn-light {
+  background-color: transparent;
+  border: none;
+}
+
+.pointer {
+  cursor: pointer;
 }

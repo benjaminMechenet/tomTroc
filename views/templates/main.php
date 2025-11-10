@@ -28,7 +28,7 @@
                 </li>
             </ul>
 
-            <ul class="nav-right w-25 justify-content-between navbar-nav d-flex flex-row-reverse align-items-center">
+            <ul class="nav-right w-25 gap-5 navbar-nav d-flex flex-row-reverse align-items-center">
                 <li class="nav-item">
                     <?php if (!empty($_SESSION['user'])): ?>
                         <a href="index.php?action=logout" class="nav-link" title="Se déconnecter">Se déconnecter</a>
@@ -42,6 +42,10 @@
                     </li>
                     <li class="nav-item">
                         <a href="index.php?action=mail" class="nav-link" title="Voir la messagerie">Messagerie</a>
+                    </li>
+                <?php else: ?>
+                    <li class="nav-item">
+                        <a href="index.php?action=signup" class="nav-link" title="S'inscrire">M'inscrire</a>
                     </li>
                 <?php endif; ?>
             </ul>

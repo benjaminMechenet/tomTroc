@@ -41,7 +41,7 @@
                         <a href="index.php?action=account" class="nav-link" title="Voir mon compte">Mon compte</a>
                     </li>
                     <li class="nav-item">
-                        <a href="index.php?action=mail" class="nav-link" title="Voir la messagerie">Messagerie</a>
+                        <a href="index.php?action=messenger" class="nav-link" title="Voir la messagerie">Messagerie</a>
                     </li>
                 <?php else: ?>
                     <li class="nav-item">

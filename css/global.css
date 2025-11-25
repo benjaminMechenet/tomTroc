@@ -137,7 +137,7 @@ a {
   width: 15%;
 }
 
-#profile_picture {
+#profile_picture, #cover_picture {
   display: none;
 }
 

@@ -103,7 +103,7 @@
                                     <?php } ?>
                                 </td>
                                 <td class="px-3 py-2 text-center">
-                                    <a href="#" class="me-3 underline-link text-grey">Éditer</a>
+                                    <a href="index.php?action=bookEdit&id=<?= htmlspecialchars($book->getId()) ?>" class="me-3 underline-link text-grey">Éditer</a>
                                     <a href="index.php?action=delete-book&id=<?= htmlspecialchars($book->getId()) ?>" onclick="return confirm('Voulez-vous vraiment supprimerce livre ?')" class="text-danger underline-link">Supprimer</a>
                                 </td>
                             </tr>

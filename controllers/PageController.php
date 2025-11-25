@@ -55,6 +55,21 @@ class PageController
     /**
      * @return void
      */
+    public function showBookEdit($id): void
+    {
+        $bookManager = new BookManager();
+        $book = $bookManager->findById($id);
+
+        $userManager = new UserManager();
+        $user = $userManager->findById($book->getUserId());
+
+        $view = new View("BookEdit");
+        $view->render("bookEdit", ["book" => $book, 'user' => $user]);
+    }
+
+    /**
+     * @return void
+     */
     public function showAccount(): void
     {
         $userManager = new UserManager();
@@ -99,5 +114,26 @@ class PageController
     {
         $view = new View("Login");
         $view->render("login");
+    }
+
+
+    /**
+     * @return void
+     */
+    public function showMessenger(): void
+    {
+        if ($_SESSION) {
+            $userManager = new UserManager();
+            $user = $userManager->findById($_SESSION['user']['id']);
+
+            $discussionsManager = new DiscussionManager();
+            $discussions = $discussionsManager->findByUser($user);
+
+            $view = new View("Messenger");
+            $view->render("messenger", ['user' => $user, 'discussions' => $discussions]);
+        } else {
+            $view = new View("Login");
+            $view->render("login");
+        }
     }
 }

@@ -1,5 +1,6 @@
 const fileInput = document.getElementById("profile_picture");
 const form = document.getElementById("profileForm");
+const button = form.querySelector('button[type="submit"]');
 
 fileInput.addEventListener("change", () => {
   if (fileInput.files.length > 0) {
@@ -7,7 +8,6 @@ fileInput.addEventListener("change", () => {
   }
 });
 
-const button = form.querySelector('button[type="submit"]');
 button.addEventListener("click", (e) => {
   e.preventDefault();
   fileInput.click();

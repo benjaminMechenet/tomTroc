@@ -2,16 +2,18 @@
 
 class Discussion extends AbstractEntity
 {
-    private int $user1 = "";
-    private int $user2 = "";
-    private int $lastMessage = "";
+    private int $user_1;
+    private int $user_2;
+    private int $lastMessage;
+    private ?Message $message = null;
+    private ?User $otherUser = null;
 
     /**
-     * @param int $user1
+     * @param int $user_1
      */
-    public function setUser1(string $user1): void
+    public function setUser1(string $user_1): void
     {
-        $this->user1 = $user1;
+        $this->user_1 = $user_1;
     }
 
     /**
@@ -19,15 +21,15 @@ class Discussion extends AbstractEntity
      */
     public function getUser1(): int
     {
-        return $this->user1;
+        return $this->user_1;
     }
 
     /**
-     * @param int $user2
+     * @param int $user_2
      */
-    public function setUser2(string $user2): void
+    public function setUser2(string $user_2): void
     {
-        $this->user2 = $user2;
+        $this->user_2 = $user_2;
     }
 
     /**
@@ -35,7 +37,7 @@ class Discussion extends AbstractEntity
      */
     public function getUser2(): int
     {
-        return $this->user2;
+        return $this->user_2;
     }
 
     /**
@@ -52,5 +54,37 @@ class Discussion extends AbstractEntity
     public function getLastMessage(): int
     {
         return $this->lastMessage;
+    }
+
+    /**
+     * @param Message $message
+     */
+    public function setMessage(Message $message): void
+    {
+        $this->message = $message;
+    }
+
+    /**
+     * @return Message
+     */
+    public function getMessage(): ?Message
+    {
+        return $this->message;
+    }
+
+    /**
+     * @param User $otherUser
+     */
+    public function setOtherUser(User $otherUser): void
+    {
+        $this->otherUser = $otherUser;
+    }
+
+    /**
+     * @return User
+     */
+    public function getOtherUser(): ?User
+    {
+        return $this->otherUser;
     }
 }

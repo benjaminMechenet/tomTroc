@@ -79,6 +79,29 @@ try {
             $controller->updateAvailability();
             break;
 
+        case 'bookEdit':
+            $controller = new PageController();
+            $id = $_GET['id'] ?? null;
+            $controller->showBookEdit($id);
+            break;
+
+        case 'update-cover':
+            $controller = new BookController();
+            $id = $_GET['id'] ?? null;
+            $controller->updateCoverPicture($id);
+            break;
+
+        case 'update-book':
+            $controller = new BookController();
+            $id = $_GET['id'] ?? null;
+            $controller->update($id);
+            break;
+
+        case 'messenger':
+            $controller = new PageController();
+            $controller->showMessenger();
+            break;
+
         default:
             throw new Exception("La page demandée n'existe pas.");
     }

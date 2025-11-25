@@ -68,6 +68,32 @@ class BookManager extends AbstractEntityManager
         return $books;
     }
 
+    /**
+     * @return Book
+     */
+    public function findByIdAndUser($id, $userId): Book
+    {
+        $stmt = $this->pdo->prepare('SELECT * FROM books WHERE id = ? AND user_id = ?');
+        $stmt->execute([$id, $userId]);
+        $book = new Book($stmt->fetch());
+
+        return $book;
+    }
+
+    public function update($title, $author, $description, $available, $id): void
+    {
+        $sql = 'UPDATE books SET title = ?, author = ?, description = ?, available = ? WHERE id = ?';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$title, $author, $description, $available, $id]);
+    }
+
+    public function updateImage(string $path, $id): void
+    {
+        $sql = 'UPDATE books SET image_url = ? WHERE id = ?';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$path, $id]);
+    }
+
     public function delete($id): bool
     {
         $check = $this->pdo->prepare('SELECT id FROM books WHERE id = ?');

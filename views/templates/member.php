@@ -30,7 +30,7 @@
                         <span class="text-black"><i class="bi bi-book me-1"></i> <?= count($books) ?> livres</span>
                     </div>
                 </div>
-                <a class="px-4 py-3 mt-5 btn btn-outline-success bg-yellow">Écrire un message</a>
+                <a href="index.php?action=messenger" class="px-4 py-3 mt-5 btn btn-outline-success bg-yellow">Écrire un message</a>
             </div>
         </div>
 

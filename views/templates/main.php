@@ -87,7 +87,7 @@
         </nav>
     </header>
 
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu">
         <div class="offcanvas-header">
             <h2 class="offcanvas-title fs-5" id="mobileMenuLabel">Menu</h2>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas"

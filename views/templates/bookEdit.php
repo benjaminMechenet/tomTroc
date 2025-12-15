@@ -7,7 +7,7 @@
             <h1 class="mt-lg-2 mb-lg-4 mb-2 py-4">Modifier les informations</h1>
             <div class="gap-lg-0 gap-3 d-flex flex-lg-row flex-column align-items-start bg-white w-full rounded-4">
                 <div class="col-lg-6 col-12 p-lg-5 p-3 flex flex-column">
-                    <label for="imageUrl" class="form-label text-grey">Photo</label>
+                    <label for="cover_picture" class="form-label text-grey">Photo</label>
                     <img id="img_preview" class="w-100" alt="<?= htmlspecialchars($book->getImageUrl()) ?>" src="<?= htmlspecialchars($book->getImageUrl()) ?>" />
                     <input type="file" name="cover_picture" id="cover_picture" accept="image/*">
                     <button class="underline-link text-grey btn-light mt-2" id="img-button" name="update_picture_btn">modifier la photo</button>

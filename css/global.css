@@ -111,7 +111,7 @@ a {
   height: 84.5vh;
 }
 
-@media screen and (max-device-width: 799px) {
+@media screen and (max-width: 799px) {
   .cover-img {
     height: 450px;
   }
@@ -127,13 +127,21 @@ a {
   overflow: hidden;
 }
 
-@media screen and (max-device-width: 799px) {
+.message-holder {
+  position: relative;
+}
+
+@media screen and (max-width: 799px) {
   .img-banner {
     height: 450px;
   }
 
   #discussion-holder {
     height: 40vh;
+  }
+
+  .message-holder {
+    position: absolute;
   }
 }
 

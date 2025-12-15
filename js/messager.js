@@ -26,7 +26,13 @@ if (document.getElementById("messageForm")) {
       if (container && messageContent.trim() !== "") {
         const div = document.createElement("div");
 
-        div.classList.add("sended", "w-75", "align-self-end", "my-2");
+        div.classList.add(
+          "sended",
+          "col-11",
+          "col-lg-9",
+          "align-self-end",
+          "my-2"
+        );
         const now = new Date();
         const formattedDate =
           String(now.getDate()).padStart(2, "0") +

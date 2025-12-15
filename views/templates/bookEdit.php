@@ -3,7 +3,7 @@
 
         <div class="col-lg-9 col-12 m-auto p-lg-4 m-4">
             <a href="index.php?action=account" class="text-grey" title="Voir mon compte">
-                <img src="<?= BASE_URL ?>/assets/back-arrow.svg" /> retour</a>
+                <img src="<?= BASE_URL ?>/assets/back-arrow.svg" alt="" /> retour</a>
             <h1 class="mt-lg-2 mb-lg-4 mb-2 py-4">Modifier les informations</h1>
             <div class="gap-lg-0 gap-3 d-flex flex-lg-row flex-column align-items-start bg-white w-full rounded-4">
                 <div class="col-lg-6 col-12 p-lg-5 p-3 flex flex-column">

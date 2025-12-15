@@ -11,7 +11,7 @@
                 <a class="main-button text-center mt-4 col-12 col-lg-7" href="index.php?action=books" title="Voir les livres à l'échange">Découvrir</a>
             </div>
             <figure class="col-lg-6 col-12 text-end">
-                <img class="w-100" src="<?= BASE_URL ?>/assets/photos/hamza.webp" />
+                <img alt="" class="w-100" src="<?= BASE_URL ?>/assets/photos/hamza.webp" />
                 <figcaption class="pt-1 me-3 me-lg-0 text-grey fst-italic">Hamza</figcaption>
             </figure>
         </section>
@@ -54,8 +54,8 @@
         </section>
     </div>
 
-    <img class="col-12 d-lg-block d-none" src="<?= BASE_URL ?>/assets/photos/banner.webp" />
-    <img class="col-12 d-lg-none d-block" src="<?= BASE_URL ?>/assets/photos/banner-mobile.webp" />
+    <img alt="" class="col-12 d-lg-block d-none" src="<?= BASE_URL ?>/assets/photos/banner.webp" />
+    <img alt="" class="col-12 d-lg-none d-block" src="<?= BASE_URL ?>/assets/photos/banner-mobile.webp" />
 
     <div class="bg-brown pt-lg-5 pb-5">
         <section class="col-lg-3 col-10 py-lg-5 d-flex flex-column m-auto">
@@ -65,7 +65,7 @@
             <p>Nous sommes passionnés par la création d'une plateforme conviviale qui permet aux lecteurs de se connecter, de partager leurs découvertes littéraires et d'échanger des livres qui attendent patiemment sur les étagères.</p>
             <div class="d-flex flex-row justify-content-between">
                 <span class="text-grey fst-italic">L'équipe Tom Troc</span>
-                <img src="<?= BASE_URL ?>/assets/coeur.svg" />
+                <img alt='' src="<?= BASE_URL ?>/assets/coeur.svg" />
             </div>
         </section>
     </div>

@@ -37,7 +37,7 @@
         <?php if ($member) { ?>
             <section class="col-12 col-lg-9 message-holder p-3 d-flex flex-column bg-brown">
                 <a href="index.php?action=messenger" class="text-grey d-lg-none mb-3" title="Retour">
-                    <img src="<?= BASE_URL ?>/assets/back-arrow.svg" /> retour
+                    <img alt="" src="<?= BASE_URL ?>/assets/back-arrow.svg" /> retour
                 </a>
 
                 <div class="d-flex align-items-center mb-3">

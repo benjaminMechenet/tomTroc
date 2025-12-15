@@ -9,6 +9,7 @@
                     <img src="<?= htmlspecialchars($user->getProfilePicture()) ?>" alt="Photo de profil" class="profile-pic rounded-pill">
                 <?php } ?>
                 <form id="profileForm" action="index.php?action=update-picture" method="POST" enctype="multipart/form-data">
+                    <label for="profile_picture" class="d-none">test</label>
                     <input type="file" name="profile_picture" id="profile_picture" accept="image/*" required>
                     <button class="underline-link text-grey btn-light mt-2" type="submit" name="update_picture_btn">modifier</button>
                 </form>

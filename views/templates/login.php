@@ -21,6 +21,6 @@
         </div>
     </div>
     <div class="col-lg-6 col-12 cover-img d-flex justify-content-center align-items-center">
-        <img src="<?= BASE_URL ?>/assets/photos/login.webp" />
+        <img alt="" src="<?= BASE_URL ?>/assets/photos/login.webp" />
     </div>
 </main>

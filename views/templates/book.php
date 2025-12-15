@@ -1,6 +1,6 @@
 <main class="flex-grow-1 gap-5 d-flex flex-lg-row flex-column bg-lightgrey">
     <div class="col-12 col-lg-6 cover-img d-flex justify-content-center align-items-center">
-        <img src="<?= htmlspecialchars($book->getImageUrl()) ?>" />
+        <img alt="" src="<?= htmlspecialchars($book->getImageUrl()) ?>" />
     </div>
 
     <div class="col-lg-5 col-11 p-lg-5 p-3 m-auto">

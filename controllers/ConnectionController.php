@@ -5,7 +5,7 @@ class ConnectionController
     public function signIn()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $email = trim($_POST['email'] ?? '');
+            $email = filter_var(trim($_POST['email'] ?? ''), FILTER_VALIDATE_EMAIL);
             $password = $_POST['password'] ?? '';
 
             if ($email === '' || $password === '') {

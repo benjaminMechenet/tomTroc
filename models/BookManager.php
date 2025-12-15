@@ -42,13 +42,18 @@ class BookManager extends AbstractEntityManager
     /**
      * @return Book
      */
-    public function findById(int $id): Book
+    public function findById(int $id): Book | null
     {
         $stmt = $this->pdo->prepare('SELECT * FROM books WHERE id = ?');
         $stmt->execute([$id]);
-        $book = new Book($stmt->fetch());
 
-        return $book;
+        $data = $stmt->fetch();
+
+        if (!$data) {
+            return null;
+        }
+
+        return new Book($data);
     }
 
     /**
@@ -80,11 +85,18 @@ class BookManager extends AbstractEntityManager
         return $book;
     }
 
-    public function update($title, $author, $description, $available, $id): void
+    public function update($title, $author, $description, $available, $id, $relativePath): void
     {
-        $sql = 'UPDATE books SET title = ?, author = ?, description = ?, available = ? WHERE id = ?';
+        $sql = 'UPDATE books SET title = ?, author = ?, description = ?, image_url = ?, available = ? WHERE id = ?';
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([$title, $author, $description, $available, $id]);
+        $stmt->execute([$title, $author, $description, $relativePath, $available, $id]);
+    }
+
+    public function create($title, $author, $description, $id, $relativePath): void
+    {
+        $sql = 'INSERT INTO books (title, author, description, image_url, user_id) VALUES (?, ?, ?, ?, ?)';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$title, $author, $description, $relativePath, $id]);
     }
 
     public function updateImage(string $path, $id): void
@@ -107,7 +119,7 @@ class BookManager extends AbstractEntityManager
         return $stmt->execute([$id]);
     }
 
-    public function updataAvailability($id, $state): bool
+    public function updateAvailability($id, $state): bool
     {
         $stmt = $this->pdo->prepare("UPDATE books SET available = ? WHERE id = ?");
         return $stmt->execute([$state, $id]);

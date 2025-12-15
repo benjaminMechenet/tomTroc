@@ -2,6 +2,11 @@
 require_once __DIR__ . '/config/autoload.php';
 require_once 'config/config.php';
 
+if (preg_match('#index\.php/.+#', $_SERVER['REQUEST_URI'])) {
+    header('Location: /tomTroc/index.php');
+    exit;
+}
+
 $action = Utils::request('action', 'home');
 
 try {
@@ -97,13 +102,31 @@ try {
             $controller->update($id);
             break;
 
+        case 'create-book':
+            $controller = new PageController();
+            $controller->createBook();
+            break;
+
+        case 'add-book':
+            $controller = new BookController();
+            $controller->addBook();
+            break;
+
         case 'messenger':
             $controller = new PageController();
-            $controller->showMessenger();
+            $id = $_GET['id'] ?? null;
+            $controller->showMessenger($id);
+            break;
+
+        case 'sendMessage':
+            $controller = new MesssageController();
+            $controller->sendMessage();
             break;
 
         default:
-            throw new Exception("La page demandée n'existe pas.");
+            $controller = new PageController();
+            $controller->show404();
+            break;
     }
 } catch (Exception $e) {
     $errorView = new View('Erreur');

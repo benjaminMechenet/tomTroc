@@ -6,7 +6,7 @@ class Book extends AbstractEntity
     private string $title = "";
     private string $author = "";
     private string $description = "";
-    private string $imageUrl = "";
+    private ?string $imageUrl = null;
     private bool $available = true;
     private ?DateTime $createdAt = null;
     private string $userPseudo = "";
@@ -92,17 +92,17 @@ class Book extends AbstractEntity
     }
 
     /**
-     * @param string $imageUrl
+     * @param string|null $imageUrl
      */
-    public function setImageUrl(string $imageUrl): void
+    public function setImageUrl(?string $imageUrl): void
     {
         $this->imageUrl = $imageUrl;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getImageUrl(): string
+    public function getImageUrl(): ?string
     {
         return $this->imageUrl;
     }

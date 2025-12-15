@@ -73,7 +73,46 @@ class DiscussionManager extends AbstractEntityManager
         return $discussions;
     }
 
+    /**
+     * @return ?Discussion
+     */
+    public function findByUsers($id1, $id2): ?Discussion
+    {
+        $sql = 'SELECT id
+                FROM discussions
+                WHERE 
+                (user_1 = ? AND user_2 = ?)
+                OR 
+                (user_2 = ? AND user_1 = ?)';
 
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$id1, $id2, $id1, $id2]);
+        $data = $stmt->fetch();
 
-    public function update(): void {}
+        if (!$data) {
+            return null;
+        }
+
+        $discussion = new Discussion($data);
+        return $discussion;
+    }
+
+    /**
+     * @return int
+     */
+    public function create($id1, $id2): int
+    {
+        $sql = 'INSERT INTO discussions (user_1, user_2) VALUES (?, ?)';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$id1, $id2]);
+        $id = $this->pdo->lastInsertId();
+        return $id;
+    }
+
+    public function updateLast($discussion, $message): void
+    {
+        $sql = 'UPDATE discussions SET last_message = ? WHERE id = ?';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$message, $discussion]);
+    }
 }

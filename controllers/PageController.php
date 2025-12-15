@@ -45,6 +45,11 @@ class PageController
         $bookManager = new BookManager();
         $book = $bookManager->findById($id);
 
+        if (!$book) {
+            header('Location: index.php?action=404');
+            return;
+        }
+
         $userManager = new UserManager();
         $user = $userManager->findById($book->getUserId());
 
@@ -60,6 +65,11 @@ class PageController
         $bookManager = new BookManager();
         $book = $bookManager->findById($id);
 
+        if (!$book) {
+            header('Location: index.php?action=404');
+            return;
+        }
+
         $userManager = new UserManager();
         $user = $userManager->findById($book->getUserId());
 
@@ -70,16 +80,29 @@ class PageController
     /**
      * @return void
      */
+    public function createBook(): void
+    {
+        $view = new View("BookCreate");
+        $view->render("bookCreate");
+    }
+
+    /**
+     * @return void
+     */
     public function showAccount(): void
     {
-        $userManager = new UserManager();
-        $user = $userManager->findById($_SESSION['user']['id']);
+        if ($_SESSION['user']) {
+            $userManager = new UserManager();
+            $user = $userManager->findById($_SESSION['user']['id']);
 
-        $bookManager = new BookManager();
-        $books = $bookManager->findByUser($user);
+            $bookManager = new BookManager();
+            $books = $bookManager->findByUser($user);
 
-        $view = new View("Account");
-        $view->render("account", ['user' => $user, 'books' => $books]);
+            $view = new View("Account");
+            $view->render("account", ['user' => $user, 'books' => $books]);
+        } else {
+            header('Location: index.php');
+        }
     }
 
 
@@ -90,6 +113,11 @@ class PageController
     {
         $userManager = new UserManager();
         $user = $userManager->findById($id);
+
+        if (!$user) {
+            header('Location: index.php?action=404');
+            return;
+        }
 
         $bookManager = new BookManager();
         $books = $bookManager->findByUser($user);
@@ -120,20 +148,39 @@ class PageController
     /**
      * @return void
      */
-    public function showMessenger(): void
+    public function showMessenger($id): void
     {
         if ($_SESSION) {
             $userManager = new UserManager();
             $user = $userManager->findById($_SESSION['user']['id']);
 
+            $member = '';
+            $messages = [];
+
+            if ($id) {
+                $member = $userManager->findById($id);
+                $messagesManager = new MessagesManager();
+                $messages = $messagesManager->findByUsers($_SESSION['user']['id'], $id);
+            }
+
             $discussionsManager = new DiscussionManager();
             $discussions = $discussionsManager->findByUser($user);
 
             $view = new View("Messenger");
-            $view->render("messenger", ['user' => $user, 'discussions' => $discussions]);
+            $view->render("messenger", ['user' => $user, 'discussions' => $discussions, 'member' => $member, 'messages' => $messages]);
         } else {
             $view = new View("Login");
             $view->render("login");
         }
+    }
+
+
+    /**
+     * @return void
+     */
+    public function show404(): void
+    {
+        $view = new View("Error");
+        $view->render("error");
     }
 }

@@ -43,18 +43,25 @@ class SignUpController
             $password = $_POST['password'] ?? '';
 
             $userManager = new UserManager();
-            if ($password !== "•••••••") {
-                $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-            } else {
-                $password = '';
-                $hashedPassword = '';
-            }
+            $currentUser = $userManager->findById($_SESSION['user']['id']);
 
-            if ($userManager->findById($_SESSION['user']['id'])) {
-                $userManager->update($pseudo, $email, $hashedPassword, $_SESSION['user']['id']);
-                header('Location: index.php?action=account');
+            if (!$currentUser) {
+                header('Location: index.php?action=login');
                 exit;
             }
+
+            if ($password !== "") {
+                $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            } else {
+                $hashedPassword = $currentUser->getPassword();
+            }
+
+            $userManager->update($pseudo, $email, $hashedPassword, $_SESSION['user']['id']);
+            $_SESSION['user']['pseudo'] = $pseudo;
+            $_SESSION['user']['email'] = $email;
+
+            header('Location: index.php?action=account');
+            exit;
         }
     }
 

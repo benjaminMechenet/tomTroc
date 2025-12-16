@@ -54,6 +54,11 @@ if (document.getElementById("messageForm")) {
         discussionContainer.scrollTop = discussionContainer.scrollHeight;
       }
 
+      const discussion = document.getElementById(id);
+      if (!discussion) {
+        window.location.reload();
+      }
+
       form.reset();
     });
 }

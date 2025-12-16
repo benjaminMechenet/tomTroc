@@ -90,12 +90,6 @@ try {
             $controller->showBookEdit($id);
             break;
 
-        case 'update-cover':
-            $controller = new BookController();
-            $id = $_GET['id'] ?? null;
-            $controller->updateCoverPicture($id);
-            break;
-
         case 'update-book':
             $controller = new BookController();
             $id = $_GET['id'] ?? null;

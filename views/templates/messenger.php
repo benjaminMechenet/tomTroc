@@ -7,7 +7,7 @@
                 <table class="table align-middle">
                     <tbody class="discussion-table">
                         <?php foreach ($discussions as $discussion) { ?>
-                            <tr class="pointer <?= ($member && $member->getId() === $discussion->getOtherUser()->getId()) ? 'active-discussion' : '' ?>" data-href="index.php?action=messenger&id=<?= htmlspecialchars($discussion->getOtherUser()->getId()) ?>">
+                            <tr id=<?= htmlspecialchars($discussion->getOtherUser()->getId()) ?> class="pointer <?= ($member && $member->getId() === $discussion->getOtherUser()->getId()) ? 'active-discussion' : '' ?>" data-href="index.php?action=messenger&id=<?= htmlspecialchars($discussion->getOtherUser()->getId()) ?>">
                                 <td class="px-4 px-lg-3 py-2 d-flex align-items-center">
                                     <?php $profilePic = $discussion->getOtherUser()->getProfilePicture() ?: './assets/profil/profil.webp'; ?>
                                     <img width='48' height='48' src="<?= htmlspecialchars($profilePic) ?>" alt="Photo de profil" class="profile-pic rounded-pill">

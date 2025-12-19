@@ -52,12 +52,23 @@ try {
             break;
 
         case 'book':
+            if (empty($_GET['id'])) {
+                $controller = new PageController();
+                $controller->show404();
+                break;
+            }
+
             $controller = new PageController();
             $id = $_GET['id'] ?? null;
             $controller->showBook($id);
             break;
 
         case 'delete-book':
+            if (empty($_GET['id'])) {
+                $controller = new PageController();
+                $controller->show404();
+                break;
+            }
             $controller = new BookController();
             $id = $_GET['id'] ?? null;
             $controller->delete($id);
@@ -74,6 +85,11 @@ try {
             break;
 
         case 'member':
+            if (empty($_GET['id'])) {
+                $controller = new PageController();
+                $controller->show404();
+                break;
+            }
             $controller = new PageController();
             $id = $_GET['id'] ?? null;
             $controller->showMember($id);
@@ -85,12 +101,22 @@ try {
             break;
 
         case 'bookEdit':
+            if (empty($_GET['id'])) {
+                $controller = new PageController();
+                $controller->show404();
+                break;
+            }
             $controller = new PageController();
             $id = $_GET['id'] ?? null;
             $controller->showBookEdit($id);
             break;
 
         case 'update-book':
+            if (empty($_GET['id'])) {
+                $controller = new PageController();
+                $controller->show404();
+                break;
+            }
             $controller = new BookController();
             $id = $_GET['id'] ?? null;
             $controller->update($id);

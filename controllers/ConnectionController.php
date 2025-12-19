@@ -34,6 +34,8 @@ class ConnectionController
                 header('Location: index.php?action=login&error=' . urlencode('Adresse email et/ou mot de passe incorrect'));
                 exit;
             }
+        } else {
+            header('Location: index.php?action=signup');
         }
     }
 

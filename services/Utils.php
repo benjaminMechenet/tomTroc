@@ -71,7 +71,7 @@ class Utils
      * @param string $filePath
      * @param int $finalSize
      */
-    public static function resizeImageToWebp($filePath, $finalSize = 100): string
+    public static function resizeImageToWebp(string $filePath, int $finalSize = 100): string
     {
         list($origWidth, $origHeight, $imageType) = getimagesize($filePath);
 
@@ -117,16 +117,21 @@ class Utils
 
         $cropX = max(0, intval(($newWidth - $finalSize) / 2));
         $cropY = max(0, intval(($newHeight - $finalSize) / 2));
-
         imagecopy($dst, $resized, 0, 0, $cropX, $cropY, $finalSize, $finalSize);
 
-        $newFilePath = preg_replace('/\.(jpe?g|png|gif|webp)$/i', '.webp', $filePath);
-        imagewebp($dst, $newFilePath, 90);
+        $pathInfo = pathinfo($filePath);
+        $webpPath = $pathInfo['dirname'] . '/' . $pathInfo['filename'] . '.webp';
+
+        imagewebp($dst, $webpPath, 90);
+
+        if ($pathInfo['extension'] !== 'webp' && file_exists($filePath)) {
+            unlink($filePath);
+        }
 
         imagedestroy($src);
         imagedestroy($resized);
         imagedestroy($dst);
 
-        return basename($newFilePath);
+        return basename($webpPath);
     }
 }

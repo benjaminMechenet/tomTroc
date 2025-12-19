@@ -4,10 +4,29 @@ class BookController
 {
     public function delete($id)
     {
+        if (!isset($_SESSION['user']['id'])) {
+            header('Location: index.php?action=login');
+            exit;
+        }
+
         $bookManager = new BookManager();
-        $bookManager->delete($id);
-        header('Location: index.php?action=account');
-        exit;
+        if ($book = $bookManager->findByIdAndUser($id, $_SESSION['user']['id'])) {
+            $oldImagePath = $book->getImageUrl();
+
+            if (
+                $oldImagePath &&
+                $oldImagePath !== 'assets/books/default.webp' &&
+                file_exists(__DIR__ . '/../' . $oldImagePath)
+            ) {
+                unlink(__DIR__ . '/../' . $oldImagePath);
+            }
+
+            $bookManager->delete($id);
+            header('Location: index.php?action=account');
+            exit;
+        } else {
+            header('Location: index.php?action=login');
+        }
     }
 
     public function update($id)
@@ -31,8 +50,18 @@ class BookController
                 $description = trim($_POST['description'] ?? '');
                 $available = $_POST['available'] ?? 1;
                 $relativePath = $book->getImageUrl();
+                $oldImagePath = $book->getImageUrl();
 
                 if (isset($_FILES['cover_picture']) && $_FILES['cover_picture']['error'] === UPLOAD_ERR_OK) {
+
+                    if (
+                        $oldImagePath &&
+                        $oldImagePath !== 'assets/books/default.webp' &&
+                        file_exists(__DIR__ . '/../' . $oldImagePath)
+                    ) {
+                        unlink(__DIR__ . '/../' . $oldImagePath);
+                    }
+
                     $uploadDir = __DIR__ . '/../assets/books/';
 
                     $tmpName = $_FILES['cover_picture']['tmp_name'];
@@ -102,10 +131,15 @@ class BookController
                 $newFileName = Utils::resizeImageToWebp($destination, 1000);
 
                 $relativePath = 'assets/books/' . $newFileName;
+            } else {
+                $relativePath = 'assets/books/default.webp';
             }
 
 
             $bookManager->create($title, $author, $description, $userId, $relativePath);
+            header('Location: index.php?action=account');
+            exit;
+        } else {
             header('Location: index.php?action=account');
             exit;
         }

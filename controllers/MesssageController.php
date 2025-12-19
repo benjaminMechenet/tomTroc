@@ -36,6 +36,9 @@ class MesssageController
 
                 return $_POST['content'];
             }
+        } else {
+            header('Location: index.php?action=login');
+            exit;
         }
     }
 }

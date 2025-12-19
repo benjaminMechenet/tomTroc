@@ -62,6 +62,11 @@ class PageController
      */
     public function showBookEdit($id): void
     {
+        if (!isset($_SESSION['user']['id'])) {
+            header('Location: index.php?action=login');
+            exit;
+        }
+
         $bookManager = new BookManager();
         $book = $bookManager->findById($id);
 
@@ -82,6 +87,10 @@ class PageController
      */
     public function createBook(): void
     {
+        if (!isset($_SESSION['user']['id'])) {
+            header('Location: index.php?action=login');
+            exit;
+        }
         $view = new View("BookCreate");
         $view->render("bookCreate");
     }
@@ -91,6 +100,11 @@ class PageController
      */
     public function showAccount(): void
     {
+        if (!isset($_SESSION['user']['id'])) {
+            header('Location: index.php?action=login');
+            exit;
+        }
+
         if ($_SESSION['user']) {
             $userManager = new UserManager();
             $user = $userManager->findById($_SESSION['user']['id']);
@@ -131,6 +145,11 @@ class PageController
      */
     public function showSignUp(): void
     {
+        if (isset($_SESSION['user']['id'])) {
+            header('Location: index.php?action=account');
+            exit;
+        }
+
         $view = new View("SignUp");
         $view->render("signup");
     }
@@ -140,6 +159,10 @@ class PageController
      */
     public function showLogin(): void
     {
+        if (isset($_SESSION['user']['id'])) {
+            header('Location: index.php?action=account');
+            exit;
+        }
         $view = new View("Login");
         $view->render("login");
     }
